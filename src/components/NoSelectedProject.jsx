@@ -1,3 +1,3 @@
 export default function NoSelectedProject() {
-  return <div className="flex-1 h-screen p-4">no selected project</div>;
+  return <h1 className="text-2xl font-semibold">No selected project</h1>;
 }

@@ -1,16 +1,14 @@
 import SideBar from "./components/SideBar";
-import NoSelectedTask from "./components/NoSelectedProject";
+import Content from "./components/Content";
 
 import ProjectProvider from "./store/ProjectContext";
 
 function App() {
-  let content = <NoSelectedTask />;
-
   return (
     <ProjectProvider>
-      <main className="flex">
+      <main className="flex bg-slate-100">
         <SideBar />
-        {content}
+        <Content />
       </main>
     </ProjectProvider>
   );

@@ -4,13 +4,18 @@ let id = 0;
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ProjectContext = createContext({
+  selectedProjectId: null,
   projects: [],
   tasks: [],
   addProject: () => {},
+  selectProject: () => {},
+  cancelProject: () => {},
+  deleteProjectHandler: () => {},
 });
 
 export default function ProjectProvider({ children }) {
   const [projectsState, setProjectsState] = useState({
+    selectedProjectId: null,
     projects: [],
     tasks: [],
   });
@@ -28,10 +33,36 @@ export default function ProjectProvider({ children }) {
     }));
   };
 
+  function selectProjectHandler(projectId) {
+    setProjectsState((prevState) => ({
+      ...prevState,
+      selectedProjectId: projectId,
+    }));
+  }
+
+  function cancelProjectHandler() {
+    setProjectsState((prevState) => ({
+      ...prevState,
+      selectedProjectId: null,
+    }));
+  }
+
+  function deleteProjectHandler(projectId) {
+    setProjectsState((prevState) => ({
+      ...prevState,
+      selectedProjectId: null,
+      projects: prevState.projects.filter(
+        (project) => project.id !== projectId
+      ),
+    }));
+  }
+
   const projectsStateValue = {
-    projects: projectsState.projects,
-    tasks: projectsState.tasks,
+    state: projectsState,
     addProject: addProjectHandler,
+    selectProject: selectProjectHandler,
+    cancelProject: cancelProjectHandler,
+    deleteProjectHandler,
   };
 
   return (
