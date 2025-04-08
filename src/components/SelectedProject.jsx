@@ -1,16 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { ProjectContext } from "../store/ProjectContext";
 
 import Button from "./Button";
+import Modal from "./Modal";
 
 export default function SelectedProject({ project }) {
   const { cancelProject, deleteProjectHandler, changeProjectName } =
     useContext(ProjectContext);
   const [isEditing, setIsEditing] = useState(false);
   const [editedProjectName, setEditedProjectName] = useState(project.name);
+  const modalRef = useRef();
 
   function handleInputChange(event) {
     setEditedProjectName(event.target.value);
+    if (event.target.value.length >= 30) {
+      modalRef.current.open();
+      setEditedProjectName(project.name);
+    }
   }
 
   function handleEditProjectName() {
@@ -26,6 +32,14 @@ export default function SelectedProject({ project }) {
 
   return (
     <>
+      <Modal ref={modalRef} buttonCaption="Okay">
+        <h2 className="text-xl font-bold text-stone-700 my-4">
+          Longer characters
+        </h2>
+        <p className="text-stone-600 mb-4">
+          Oops... try entering character less than 30 characters.
+        </p>
+      </Modal>
       <div className=" flex justify-between items-center border-b-2 border-slate-950 pb-2">
         {isEditing ? (
           <input value={editedProjectName} onChange={handleInputChange} />
