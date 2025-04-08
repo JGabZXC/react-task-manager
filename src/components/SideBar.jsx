@@ -12,7 +12,6 @@ export default function SideBar() {
 
   function handleInputChange(event) {
     setInputValue(event.target.value);
-    console.log(inputValue.length);
     if (inputValue.length >= 30) {
       modalRef.current.open();
       setInputValue("");

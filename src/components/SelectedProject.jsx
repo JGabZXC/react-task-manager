@@ -1,19 +1,41 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProjectContext } from "../store/ProjectContext";
 
 import Button from "./Button";
 
 export default function SelectedProject({ project }) {
-  const { cancelProject, deleteProjectHandler } = useContext(ProjectContext);
+  const { cancelProject, deleteProjectHandler, changeProjectName } =
+    useContext(ProjectContext);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedProjectName, setEditedProjectName] = useState(project.name);
+
+  function handleInputChange(event) {
+    setEditedProjectName(event.target.value);
+  }
+
+  function handleEditProjectName() {
+    if (isEditing) {
+      changeProjectName(project.id, editedProjectName);
+    }
+    setIsEditing((prev) => !prev);
+  }
 
   function handleCancelProject() {
     cancelProject();
   }
+
   return (
     <>
-      <div className=" flex justify-between">
-        <h1 className="text-xl font-medium">{project.name}</h1>
+      <div className=" flex justify-between items-center border-b-2 border-slate-950 pb-2">
+        {isEditing ? (
+          <input value={editedProjectName} onChange={handleInputChange} />
+        ) : (
+          <h1 className="text-xl font-medium">{editedProjectName}</h1>
+        )}
         <div className="flex gap-4">
+          <Button onClick={handleEditProjectName}>
+            {isEditing ? "Save" : "Edit Project Name"}
+          </Button>
           <Button onClick={handleCancelProject} type="warning">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +74,12 @@ export default function SelectedProject({ project }) {
           </Button>
         </div>
       </div>
-      <div></div>
+      <div>
+        <h2 className="text-lg font-medium mt-4">Tasks</h2>
+        <ul className="list-disc pl-5 mt-2">
+          <li>wow</li>
+        </ul>
+      </div>
     </>
   );
 }

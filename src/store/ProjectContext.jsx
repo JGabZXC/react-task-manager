@@ -11,6 +11,7 @@ export const ProjectContext = createContext({
   selectProject: () => {},
   cancelProject: () => {},
   deleteProjectHandler: () => {},
+  changeProjectName: () => {},
 });
 
 export default function ProjectProvider({ children }) {
@@ -57,12 +58,28 @@ export default function ProjectProvider({ children }) {
     }));
   }
 
+  function changeProjectName(projectId, newName) {
+    const project = projectsState.projects.find(
+      (project) => project.id === projectId
+    );
+
+    project.name = newName;
+    setProjectsState((prevState) => ({
+      ...prevState,
+      projects: prevState.projects.map((project) => {
+        if (project.id === projectId) return { ...project, name: newName };
+        return project;
+      }),
+    }));
+  }
+
   const projectsStateValue = {
     state: projectsState,
     addProject: addProjectHandler,
     selectProject: selectProjectHandler,
     cancelProject: cancelProjectHandler,
     deleteProjectHandler,
+    changeProjectName,
   };
 
   return (

@@ -14,7 +14,9 @@ export default function Content() {
     const selectedProject = projects.find(
       (project) => project.id === selectedProjectId
     );
-    content = <SelectedProject project={selectedProject} />;
+    content = (
+      <SelectedProject key={selectedProjectId} project={selectedProject} />
+    );
   }
 
   return (
