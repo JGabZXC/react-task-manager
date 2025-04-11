@@ -1,4 +1,5 @@
 export default function Button({ children, onClick, type, disabled }) {
+  console.log("<Button/> rendered");
   let cssClasses =
     "cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300";
 

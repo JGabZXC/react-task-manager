@@ -3,10 +3,14 @@ import { ProjectContext } from "../store/ProjectContext";
 
 import Button from "./Button";
 import Modal from "./Modal";
+import TaskList from "./TaskList";
+import ProjectDate from "./ProjectDate";
 
 export default function SelectedProject({ project }) {
+  console.log("<SelectedProject/> rendered");
   const { cancelProject, deleteProjectHandler, changeProjectName } =
     useContext(ProjectContext);
+
   const [isEditing, setIsEditing] = useState(false);
   const [editedProjectName, setEditedProjectName] = useState(project.name);
   const modalRef = useRef();
@@ -40,7 +44,7 @@ export default function SelectedProject({ project }) {
           Oops... try entering character less than 30 characters.
         </p>
       </Modal>
-      <div className=" flex justify-between items-center border-b-2 border-slate-950 pb-2">
+      <div className="flex justify-between items-center border-b-2 border-slate-950 pb-2">
         {isEditing ? (
           <input value={editedProjectName} onChange={handleInputChange} />
         ) : (
@@ -57,7 +61,7 @@ export default function SelectedProject({ project }) {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              class="size-6"
+              className="size-6"
             >
               <path
                 strokeLinecap="round"
@@ -77,7 +81,7 @@ export default function SelectedProject({ project }) {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              class="size-6"
+              className="size-6"
             >
               <path
                 strokeLinecap="round"
@@ -88,11 +92,13 @@ export default function SelectedProject({ project }) {
           </Button>
         </div>
       </div>
+      <div className="my-4">
+        <ProjectDate project={project} />
+        <p>Description</p>
+      </div>
       <div>
         <h2 className="text-lg font-medium mt-4">Tasks</h2>
-        <ul className="list-disc pl-5 mt-2">
-          <li>wow</li>
-        </ul>
+        <TaskList projectId={project.id} />
       </div>
     </>
   );

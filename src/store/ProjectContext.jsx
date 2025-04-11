@@ -12,6 +12,7 @@ export const ProjectContext = createContext({
   cancelProject: () => {},
   deleteProjectHandler: () => {},
   changeProjectName: () => {},
+  addDate: () => {},
 });
 
 export default function ProjectProvider({ children }) {
@@ -21,6 +22,7 @@ export default function ProjectProvider({ children }) {
     tasks: [],
   });
 
+  // PROJECT HANDLER
   const addProjectHandler = (name) => {
     const projectId = ++id;
     const newProject = {
@@ -73,6 +75,23 @@ export default function ProjectProvider({ children }) {
     }));
   }
 
+  // DATE HANDLER
+  function addDateHandler(projectId, date) {
+    setProjectsState((prevState) => {
+      const project = prevState.projects.find(
+        (project) => project.id === projectId
+      );
+      project.dueDate = date;
+      return {
+        ...prevState,
+        projects: prevState.projects.map((project) => {
+          if (project.id === projectId) return { ...project, dueDate: date };
+          return project;
+        }),
+      };
+    });
+  }
+
   const projectsStateValue = {
     state: projectsState,
     addProject: addProjectHandler,
@@ -80,6 +99,7 @@ export default function ProjectProvider({ children }) {
     cancelProject: cancelProjectHandler,
     deleteProjectHandler,
     changeProjectName,
+    addDate: addDateHandler,
   };
 
   return (
