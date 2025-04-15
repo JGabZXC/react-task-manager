@@ -29,7 +29,7 @@ export default function ProjectDate({ project }) {
 
   let content = (
     <button
-      className="mb-1 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-slate-300 hover:bg-slate-500 hover:border-slate-500 hover:text-slate-100"
+      className="mb-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-slate-300 hover:bg-slate-500 hover:border-slate-500 hover:text-slate-100"
       onClick={handleContentChange}
     >
       Add date
@@ -38,36 +38,38 @@ export default function ProjectDate({ project }) {
 
   if (isEditing) {
     content = (
-      <div>
+      <div className="mb-2 flex items-center justify-between">
         <input
           type="date"
-          className="mb-1 py-2 px-4 rounded-md border-2 border-slate-300"
+          className="py-2 px-4 rounded-md border-2 border-slate-300"
           value={date}
           onChange={handleDateChange}
         />
-        <button
-          className="ml-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-green-500 hover:bg-green-500 hover:border-green-500 hover:text-slate-100"
-          onClick={handleSaveDate}
-        >
-          Save
-        </button>
-        <button
-          className="ml-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-red-500 hover:bg-red-500 hover:border-red-500 hover:text-slate-100"
-          onClick={handleCancelDate}
-        >
-          Cancel
-        </button>
+        <div>
+          <button
+            className="ml-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-green-500 hover:bg-green-500 hover:border-green-500 hover:text-slate-100"
+            onClick={handleSaveDate}
+          >
+            Save
+          </button>
+          <button
+            className="ml-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-red-500 hover:bg-red-500 hover:border-red-500 hover:text-slate-100"
+            onClick={handleCancelDate}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     );
   } else if (date) {
     content = (
-      <div>
-        <span>Date: {date}</span>
+      <div className="mb-2 flex items-center justify-between">
+        <span className="text-stone-700 font-medium">Date: {date}</span>
         <button
           className="ml-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-blue-500 hover:bg-blue-500 hover:border-blue-500 hover:text-slate-100"
           onClick={handleContentChange}
         >
-          Edit
+          Edit Date
         </button>
       </div>
     );

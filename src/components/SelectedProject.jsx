@@ -5,15 +5,16 @@ import Button from "./Button";
 import Modal from "./Modal";
 import TaskList from "./TaskList";
 import ProjectDate from "./ProjectDate";
+import Description from "./Description";
 
 export default function SelectedProject({ project }) {
-  console.log("<SelectedProject/> rendered");
   const { cancelProject, deleteProjectHandler, changeProjectName } =
     useContext(ProjectContext);
 
   const [isEditing, setIsEditing] = useState(false);
   const [editedProjectName, setEditedProjectName] = useState(project.name);
   const modalRef = useRef();
+  const modalDelete = useRef();
 
   function handleInputChange(event) {
     setEditedProjectName(event.target.value);
@@ -21,6 +22,16 @@ export default function SelectedProject({ project }) {
       modalRef.current.open();
       setEditedProjectName(project.name);
     }
+  }
+
+  function handleDeleteProject() {
+    modalDelete.current.open();
+    // () => deleteProjectHandler(project.id)
+  }
+
+  function handleConfirmDelete() {
+    modalDelete.current.close();
+    deleteProjectHandler(project.id);
   }
 
   function handleEditProjectName() {
@@ -42,6 +53,16 @@ export default function SelectedProject({ project }) {
         </h2>
         <p className="text-stone-600 mb-4">
           Oops... try entering character less than 30 characters.
+        </p>
+      </Modal>
+      <Modal
+        ref={modalDelete}
+        buttonCaption="Yes"
+        onConfirm={handleConfirmDelete}
+      >
+        <h2 className="text-xl font-bold text-stone-700 my-4">Are you sure?</h2>
+        <p className="text-stone-600 mb-4">
+          This action cannot be undone. Do you want to proceed?
         </p>
       </Modal>
       <div className="flex justify-between items-center border-b-2 border-slate-950 pb-2">
@@ -71,7 +92,7 @@ export default function SelectedProject({ project }) {
             </svg>
           </Button>
           <Button
-            onClick={() => deleteProjectHandler(project.id)}
+            onClick={handleDeleteProject}
             type="danger"
             fullBackground="true"
           >
@@ -92,9 +113,9 @@ export default function SelectedProject({ project }) {
           </Button>
         </div>
       </div>
-      <div className="my-4">
+      <div className="flex flex-col my-4">
         <ProjectDate project={project} />
-        <p>Description</p>
+        <Description project={project} />
       </div>
       <div>
         <h2 className="text-lg font-medium mt-4">Tasks</h2>

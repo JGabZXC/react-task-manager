@@ -2,11 +2,15 @@ import { useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 import Button from "./Button";
 
-export default function Modal({ children, ref, buttonCaption }) {
+export default function Modal({ children, ref, buttonCaption, onConfirm }) {
   const dialog = useRef();
   useImperativeHandle(ref, () => ({
     open() {
       dialog.current.showModal();
+    },
+
+    close() {
+      dialog.current.close();
     },
   }));
 
@@ -18,7 +22,7 @@ export default function Modal({ children, ref, buttonCaption }) {
       >
         {children}
         <form method="dialog" className="mt-4 text-right">
-          <Button>{buttonCaption}</Button>
+          <Button onClick={onConfirm}>{buttonCaption}</Button>
         </form>
       </dialog>
     </>,

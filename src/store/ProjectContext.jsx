@@ -13,6 +13,7 @@ export const ProjectContext = createContext({
   deleteProjectHandler: () => {},
   changeProjectName: () => {},
   addDate: () => {},
+  addDescription: () => {},
 });
 
 export default function ProjectProvider({ children }) {
@@ -92,6 +93,25 @@ export default function ProjectProvider({ children }) {
     });
   }
 
+  // DESCRIPTION HANDLER
+  function addDescriptionHandler(projectId, description) {
+    console.log("test");
+    setProjectsState((prevState) => {
+      const project = prevState.projects.find(
+        (project) => project.id === projectId
+      );
+
+      project.description = description;
+      return {
+        ...prevState,
+        projects: prevState.projects.map((project) => {
+          if (project.id === projectId) return { ...project, description };
+          return project;
+        }),
+      };
+    });
+  }
+
   const projectsStateValue = {
     state: projectsState,
     addProject: addProjectHandler,
@@ -100,6 +120,7 @@ export default function ProjectProvider({ children }) {
     deleteProjectHandler,
     changeProjectName,
     addDate: addDateHandler,
+    addDescription: addDescriptionHandler,
   };
 
   return (
