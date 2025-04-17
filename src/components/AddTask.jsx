@@ -17,14 +17,14 @@ export default function AddTask({ projectId }) {
 
   return (
     <div className="flex flex-col mt-2">
-      <label htmlFor="" className="text-xs text-stone-700 font-bold mb-1">
+      <label htmlFor="" className="text-xs text-slate-500 font-normal mb-1 ">
         Add Task
       </label>
       <div className="flex justify-between items-center">
         <input
           type="text"
           placeholder="task name"
-          className="w-xs p-2 border-2 border-slate-300 rounded-md"
+          className="w-xs text-slate-500 p-2 rounded-md border-2 border-slate-300 focus:outline-slate-700 focus:text-slate-700 focus:font-bold"
           value={taskName}
           onChange={handleInputChange}
         />

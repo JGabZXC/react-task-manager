@@ -29,7 +29,7 @@ export default function ProjectDate({ project }) {
 
   let content = (
     <button
-      className="mb-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-slate-300 hover:bg-slate-500 hover:border-slate-500 hover:text-slate-100"
+      className="w-xs mb-2 cursor-pointer py-2 px-4 rounded-md border-2 text-slate-500 transition-colors duration-300 border-slate-300 hover:bg-slate-500 hover:border-slate-500 hover:text-slate-100"
       onClick={handleContentChange}
     >
       Add date
@@ -41,7 +41,7 @@ export default function ProjectDate({ project }) {
       <div className="mb-2 flex items-center justify-between">
         <input
           type="date"
-          className="py-2 px-4 rounded-md border-2 border-slate-300"
+          className="w-xs py-2 px-4 rounded-md border-2 border-slate-300 text-slate-500"
           value={date}
           onChange={handleDateChange}
         />
@@ -90,7 +90,7 @@ export default function ProjectDate({ project }) {
   } else if (date) {
     content = (
       <div className="mb-2 flex items-center justify-between">
-        <span className="text-stone-700 font-medium">Date: {date}</span>
+        <span className="text-slate-500 font-bold">Date: {date}</span>
         <button
           className="cursor-pointer p-2 rounded-md hover:bg-slate-900 hover:text-slate-50 transition-color duration-300"
           onClick={handleContentChange}

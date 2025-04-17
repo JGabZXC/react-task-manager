@@ -68,9 +68,15 @@ export default function SelectedProject({ project }) {
       </Modal>
       <div className="flex justify-between items-center border-b-2 border-slate-950 pb-2">
         {isEditing ? (
-          <input value={editedProjectName} onChange={handleInputChange} />
+          <input
+            className="w-xs text-slate-500 p-2 rounded-md border-2 border-slate-300 focus:outline-slate-700 focus:text-slate-700 focus:font-bold"
+            value={editedProjectName}
+            onChange={handleInputChange}
+          />
         ) : (
-          <h1 className="text-xl font-medium">{editedProjectName}</h1>
+          <h1 className="text-xl font-bold text-slate-500">
+            {editedProjectName}
+          </h1>
         )}
         <div className="flex gap-4">
           <Button onClick={handleEditProjectName}>
@@ -119,7 +125,7 @@ export default function SelectedProject({ project }) {
         <Description project={project} />
       </div>
       <div>
-        <h2 className="text-lg font-medium mt-4">Tasks</h2>
+        <h2 className="text-md font-medium mt-4 text-slate-500">Tasks</h2>
         <AddTask projectId={project.id} />
         <TaskList projectId={project.id} />
       </div>

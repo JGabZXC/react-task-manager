@@ -27,7 +27,7 @@ export default function Description({ project }) {
 
   let content = (
     <button
-      className="mb-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-slate-300 hover:bg-slate-500 hover:border-slate-500 hover:text-slate-100"
+      className="w-xs mb-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 text-slate-500 border-slate-300 hover:bg-slate-500 hover:border-slate-500 hover:text-slate-100"
       onClick={handleContentChange}
     >
       Add Description
@@ -38,7 +38,7 @@ export default function Description({ project }) {
     content = (
       <div className="flex items-center justify-between">
         <textarea
-          class="block w-1/2 p-2 border rounded-lg text-md text-gray-900 border-gray-300 bg-gray-50 resize-none"
+          class="block w-xs p-2 border rounded-lg text-md text-slate-500 border-slate-500 bg-gray-50 focus:outline-slate-700 focus:font-bold resize-none"
           value={description}
           onChange={handleDescriptionChange}
         />
@@ -87,7 +87,7 @@ export default function Description({ project }) {
   } else if (description) {
     content = (
       <div className="flex justify-between">
-        <p className="text-stone-700 font-medium whitespace-pre-wrap">
+        <p className="text-slate-500 font-medium whitespace-pre-wrap">
           {description}
         </p>
         <div>
