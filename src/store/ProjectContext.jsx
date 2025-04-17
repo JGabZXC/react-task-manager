@@ -14,6 +14,7 @@ export const ProjectContext = createContext({
   changeProjectName: () => {},
   addDate: () => {},
   addDescription: () => {},
+  addTask: () => {},
 });
 
 export default function ProjectProvider({ children }) {
@@ -112,6 +113,23 @@ export default function ProjectProvider({ children }) {
     });
   }
 
+  // TASK HANDLER
+  function addTaskHandler(projectId, taskName) {
+    const taskId = ++id;
+    const newTask = {
+      id: taskId,
+      parentId: projectId,
+      name: taskName,
+    };
+
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        tasks: [...prevState.tasks, newTask],
+      };
+    });
+  }
+
   const projectsStateValue = {
     state: projectsState,
     addProject: addProjectHandler,
@@ -121,6 +139,7 @@ export default function ProjectProvider({ children }) {
     changeProjectName,
     addDate: addDateHandler,
     addDescription: addDescriptionHandler,
+    addTask: addTaskHandler,
   };
 
   return (

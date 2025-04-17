@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import TaskList from "./TaskList";
 import ProjectDate from "./ProjectDate";
 import Description from "./Description";
+import AddTask from "./AddTask";
 
 export default function SelectedProject({ project }) {
   const { cancelProject, deleteProjectHandler, changeProjectName } =
@@ -119,6 +120,7 @@ export default function SelectedProject({ project }) {
       </div>
       <div>
         <h2 className="text-lg font-medium mt-4">Tasks</h2>
+        <AddTask projectId={project.id} />
         <TaskList projectId={project.id} />
       </div>
     </>

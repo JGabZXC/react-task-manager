@@ -38,22 +38,48 @@ export default function Description({ project }) {
     content = (
       <div className="flex items-center justify-between">
         <textarea
-          class="block w-1/2 p-2 border rounded-lg text-xs focus:ring-blue-500 focus:border-blue-500 text-gray-900 border-gray-300 bg-gray-50 resize-none"
+          class="block w-1/2 p-2 border rounded-lg text-md text-gray-900 border-gray-300 bg-gray-50 resize-none"
           value={description}
           onChange={handleDescriptionChange}
         />
         <div>
           <button
-            className="ml-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-green-500 hover:bg-green-500 hover:border-green-500 hover:text-slate-100"
+            className="cursor-pointer p-2 rounded-md hover:bg-green-300 hover:text-slate-50 transition-colors duration-300"
             onClick={handleSaveDescription}
           >
-            Save
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m4.5 12.75 6 6 9-13.5"
+              />
+            </svg>
           </button>
           <button
-            className="ml-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-red-500 hover:bg-red-500 hover:border-red-500 hover:text-slate-100"
+            className="cursor-pointer p-2 rounded-md hover:bg-red-300 hover:text-slate-50 transition-colors duration-300"
             onClick={handleCancelDescription}
           >
-            Cancel
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
           </button>
         </div>
       </div>
@@ -66,10 +92,23 @@ export default function Description({ project }) {
         </p>
         <div>
           <button
-            className=" ml-2 cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 border-blue-500 hover:bg-blue-500 hover:border-blue-500 hover:text-slate-100"
+            className="cursor-pointer p-2 rounded-md hover:bg-slate-900 hover:text-slate-50 transition-color duration-300"
             onClick={handleContentChange}
           >
-            Edit Description
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+              />
+            </svg>
           </button>
         </div>
       </div>
