@@ -62,7 +62,9 @@ export default function SideBar() {
           </Button>
         </div>
         <div>
-          <h1 className="text-lg font-semibold mb-2">Project List</h1>
+          <h1 className="text-lg text-slate-400 font-semibold mb-2">
+            Project List
+          </h1>
           <ProjectList />
         </div>
       </aside>

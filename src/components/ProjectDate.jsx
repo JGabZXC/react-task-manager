@@ -32,7 +32,23 @@ export default function ProjectDate({ project }) {
       className="w-xs mb-2 cursor-pointer py-2 px-4 rounded-md border-2 text-slate-500 transition-colors duration-300 border-slate-300 hover:bg-slate-500 hover:border-slate-500 hover:text-slate-100"
       onClick={handleContentChange}
     >
-      Add date
+      <div className="flex items-center justify-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+          />
+        </svg>
+        <p>Date</p>
+      </div>
     </button>
   );
 
@@ -47,7 +63,7 @@ export default function ProjectDate({ project }) {
         />
         <div>
           <button
-            className="cursor-pointer p-2 rounded-md hover:bg-green-300 hover:text-slate-50 transition-colors duration-300"
+            className="cursor-pointer p-2 rounded-md text-slate-500 hover:bg-green-300 hover:text-slate-50 transition-colors duration-300"
             onClick={handleSaveDate}
           >
             <svg
@@ -66,7 +82,7 @@ export default function ProjectDate({ project }) {
             </svg>
           </button>
           <button
-            className="cursor-pointer p-2 rounded-md hover:bg-red-300 hover:text-slate-50 transition-colors duration-300"
+            className="cursor-pointer p-2 rounded-md text-slate-500 hover:bg-red-300 hover:text-slate-50 transition-colors duration-300"
             onClick={handleCancelDate}
           >
             <svg
@@ -92,7 +108,7 @@ export default function ProjectDate({ project }) {
       <div className="mb-2 flex items-center justify-between">
         <span className="text-slate-500 font-bold">Date: {date}</span>
         <button
-          className="cursor-pointer p-2 rounded-md hover:bg-slate-900 hover:text-slate-50 transition-color duration-300"
+          className="cursor-pointer p-2 rounded-md text-slate-500 hover:bg-slate-900 hover:text-slate-50 transition-color duration-300"
           onClick={handleContentChange}
         >
           <svg

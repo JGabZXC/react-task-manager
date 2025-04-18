@@ -29,7 +29,7 @@ export default function AddTask({ projectId }) {
           onChange={handleInputChange}
         />
         <button
-          className="cursor-pointer rounded-md p-2 hover:bg-slate-500 hover:text-slate-50 transition-colors duration-300"
+          className="cursor-pointer rounded-md p-2 text-slate-500 hover:bg-slate-500 hover:text-slate-50 transition-colors duration-300"
           onClick={handleAddTask}
         >
           <svg

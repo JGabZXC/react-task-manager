@@ -44,7 +44,7 @@ export default function Description({ project }) {
         />
         <div>
           <button
-            className="cursor-pointer p-2 rounded-md hover:bg-green-300 hover:text-slate-50 transition-colors duration-300"
+            className="cursor-pointer p-2 rounded-md text-slate-500 hover:bg-green-300 hover:text-slate-50 transition-colors duration-300"
             onClick={handleSaveDescription}
           >
             <svg
@@ -63,7 +63,7 @@ export default function Description({ project }) {
             </svg>
           </button>
           <button
-            className="cursor-pointer p-2 rounded-md hover:bg-red-300 hover:text-slate-50 transition-colors duration-300"
+            className="cursor-pointer p-2 rounded-md text-slate-500 hover:bg-red-300 hover:text-slate-50 transition-colors duration-300"
             onClick={handleCancelDescription}
           >
             <svg
@@ -92,7 +92,7 @@ export default function Description({ project }) {
         </p>
         <div>
           <button
-            className="cursor-pointer p-2 rounded-md hover:bg-slate-900 hover:text-slate-50 transition-color duration-300"
+            className="cursor-pointer p-2 rounded-md text-slate-500 hover:bg-slate-900 hover:text-slate-50 transition-color duration-300"
             onClick={handleContentChange}
           >
             <svg
