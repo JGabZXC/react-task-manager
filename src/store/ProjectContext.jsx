@@ -104,7 +104,7 @@ export default function ProjectProvider({ children }) {
 
   // DESCRIPTION HANDLER
   function addDescriptionHandler(projectId, description) {
-    console.log("test");
+    ("test");
     setProjectsState((prevState) => {
       const project = prevState.projects.find(
         (project) => project.id === projectId

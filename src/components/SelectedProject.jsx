@@ -59,6 +59,7 @@ export default function SelectedProject({ project }) {
         ref={modalDelete}
         buttonCaption="Yes"
         onConfirm={handleConfirmDelete}
+        danger={true}
       >
         <h2 className="text-xl font-bold text-stone-700 my-4">Are you sure?</h2>
         <p className="text-stone-600 mb-4">

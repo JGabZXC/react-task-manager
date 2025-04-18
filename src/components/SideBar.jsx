@@ -28,10 +28,10 @@ export default function SideBar() {
   return (
     <>
       <Modal ref={modalRef} buttonCaption="Okay">
-        <h2 className="text-xl font-bold text-stone-700 my-4">
+        <h2 className="text-xl font-medium text-slate-700 my-4">
           Longer characters
         </h2>
-        <p className="text-stone-600 mb-4">
+        <p className="text-slate-500 mb-4">
           Oops... try entering character less than 30 characters.
         </p>
       </Modal>

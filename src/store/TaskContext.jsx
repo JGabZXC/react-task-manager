@@ -18,7 +18,7 @@ export default function TaskProvider({ children }) {
   });
 
   function addTaskHandler(projectId, taskName) {
-    console.log(tasksState);
+    tasksState;
     const taskId = Date.now();
     const newTask = {
       id: taskId,

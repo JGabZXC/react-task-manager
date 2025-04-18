@@ -18,7 +18,7 @@ export default function Content() {
     (task) => task.parentId === selectedProjectId
   );
 
-  // console.log(filteredTasks);
+  //  (filteredTasks);
 
   let content = <NoSelectedTask />;
   if (selectedProjectId) {

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { ProjectContext } from "../store/ProjectContext";
 
 export default function ProjectDate({ project }) {
-  console.log("<ProjectDate/> rendered");
+  ("<ProjectDate/> rendered");
   const { addDate } = useContext(ProjectContext);
 
   const [date, setDate] = useState(project?.dueDate || "");

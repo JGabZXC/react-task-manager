@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { ProjectContext } from "../store/ProjectContext";
 export default function Description({ project }) {
-  console.log("<Description/> rendered");
+  ("<Description/> rendered");
   const { addDescription } = useContext(ProjectContext);
   const [isEditing, setIsEditing] = useState(false);
   const [description, setDescription] = useState(project?.description || "");
@@ -38,7 +38,7 @@ export default function Description({ project }) {
     content = (
       <div className="flex items-center justify-between">
         <textarea
-          class="block w-xs p-2 border rounded-lg text-md text-slate-500 border-slate-500 bg-gray-50 focus:outline-slate-700 focus:font-bold resize-none"
+          className="block w-xs p-2 border rounded-lg text-md text-slate-500 border-slate-500 bg-gray-50 focus:outline-slate-700 focus:font-bold resize-none"
           value={description}
           onChange={handleDescriptionChange}
         />
