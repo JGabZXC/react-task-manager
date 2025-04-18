@@ -1,14 +1,18 @@
 import { useContext } from "react";
-import { ProjectContext } from "../store/ProjectContext";
+import { TaskContext } from "../store/TaskContext";
 
 export default function TaskList({ projectId }) {
   const {
-    state: { tasks },
-  } = useContext(ProjectContext);
+    tasksState: { tasks },
+    setSelectedTaskId,
+  } = useContext(TaskContext);
 
   const filteredTasks = tasks.filter((task) => task.parentId === projectId);
   const sortedTasks = [...filteredTasks].sort((a, b) => b.id - a.id);
-  console.log(sortedTasks);
+
+  function handleSelectTask(taskId) {
+    setSelectedTaskId(taskId);
+  }
 
   return (
     <>
@@ -22,9 +26,16 @@ export default function TaskList({ projectId }) {
             sortedTasks.map((task) => (
               <li
                 key={task.id}
-                className="w-xs break-words text-slate-500 font-normal mb-2"
+                className="cursor-pointer w-xs break-words text-slate-500 font-normal mb-2"
+                onClick={() => handleSelectTask(task.id)}
               >
-                {task.name}
+                {task.isDone ? (
+                  <span className="text-slate-400 line-through">
+                    {task.name}
+                  </span>
+                ) : (
+                  task.name
+                )}
               </li>
             ))}
         </ul>

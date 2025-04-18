@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
+
+import { TaskContext } from "./TaskContext";
 
 let id = 0;
 
@@ -6,7 +8,6 @@ let id = 0;
 export const ProjectContext = createContext({
   selectedProjectId: null,
   projects: [],
-  tasks: [],
   addProject: () => {},
   selectProject: () => {},
   cancelProject: () => {},
@@ -14,14 +15,14 @@ export const ProjectContext = createContext({
   changeProjectName: () => {},
   addDate: () => {},
   addDescription: () => {},
-  addTask: () => {},
 });
 
 export default function ProjectProvider({ children }) {
+  const { deleteTasks, setSelectedTaskId } = useContext(TaskContext);
+
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: null,
     projects: [],
-    tasks: [],
   });
 
   // PROJECT HANDLER
@@ -43,6 +44,8 @@ export default function ProjectProvider({ children }) {
       ...prevState,
       selectedProjectId: projectId,
     }));
+
+    setSelectedTaskId(null);
   }
 
   function cancelProjectHandler() {
@@ -50,6 +53,8 @@ export default function ProjectProvider({ children }) {
       ...prevState,
       selectedProjectId: null,
     }));
+
+    setSelectedTaskId(null);
   }
 
   function deleteProjectHandler(projectId) {
@@ -60,6 +65,9 @@ export default function ProjectProvider({ children }) {
         (project) => project.id !== projectId
       ),
     }));
+
+    setSelectedTaskId(null);
+    deleteTasks(projectId);
   }
 
   function changeProjectName(projectId, newName) {
@@ -114,21 +122,6 @@ export default function ProjectProvider({ children }) {
   }
 
   // TASK HANDLER
-  function addTaskHandler(projectId, taskName) {
-    const taskId = ++id;
-    const newTask = {
-      id: taskId,
-      parentId: projectId,
-      name: taskName,
-    };
-
-    setProjectsState((prevState) => {
-      return {
-        ...prevState,
-        tasks: [...prevState.tasks, newTask],
-      };
-    });
-  }
 
   const projectsStateValue = {
     state: projectsState,
@@ -139,7 +132,6 @@ export default function ProjectProvider({ children }) {
     changeProjectName,
     addDate: addDateHandler,
     addDescription: addDescriptionHandler,
-    addTask: addTaskHandler,
   };
 
   return (

@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { ProjectContext } from "../store/ProjectContext";
+import { TaskContext } from "../store/TaskContext";
 
 export default function AddTask({ projectId }) {
-  const { addTask } = useContext(ProjectContext);
+  const { addTask } = useContext(TaskContext);
   const [taskName, setTaskName] = useState("");
 
   function handleInputChange(e) {

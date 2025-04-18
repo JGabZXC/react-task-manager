@@ -35,7 +35,7 @@ export default function SideBar() {
           Oops... try entering character less than 30 characters.
         </p>
       </Modal>
-      <aside className="min-w-[25rem] bg-slate-800 h-screen p-4 text-slate-50">
+      <aside className="min-w-[25rem] bg-slate-800 h-screen p-4 text-slate-500">
         <div className="flex justify-between items-center mb-4">
           <input
             type="text"

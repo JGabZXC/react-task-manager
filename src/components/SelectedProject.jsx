@@ -1,7 +1,6 @@
 import { useContext, useState, useRef } from "react";
 import { ProjectContext } from "../store/ProjectContext";
 
-import Button from "./Button";
 import Modal from "./Modal";
 import TaskList from "./TaskList";
 import ProjectDate from "./ProjectDate";
