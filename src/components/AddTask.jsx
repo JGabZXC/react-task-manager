@@ -45,7 +45,7 @@ export default function AddTask({ projectId }) {
           htmlFor=""
           className={
             isError
-              ? "text-xs text-red-500 font-normal mb-1"
+              ? "text-xs text-red-300 font-normal mb-1"
               : "text-xs text-slate-500 font-normal mb-1"
           }
         >

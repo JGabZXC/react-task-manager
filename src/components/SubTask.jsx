@@ -28,10 +28,14 @@ export default function SubTask({ selectedTask }) {
           selectedSubTask.map((subTask) => (
             <li
               key={subTask.id}
-              className="flex gap-2 py-1 px-2 items-center"
+              className="flex gap-2 py-1 px-2 items-center break-all"
               onClick={() => handleSubTaskIsDone(subTask.id)}
             >
-              {subTask.isDone ? <s>{subTask.name}</s> : subTask.name}
+              {subTask.isDone ? (
+                <s className="text-slate-500">{subTask.name}</s>
+              ) : (
+                subTask.name
+              )}
             </li>
           ))}
       </ul>

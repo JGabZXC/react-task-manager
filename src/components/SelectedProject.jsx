@@ -35,6 +35,7 @@ export default function SelectedProject({ project }) {
   }
 
   function handleEditProjectName() {
+    if (!editedProjectName) return;
     if (isEditing) {
       changeProjectName(project.id, editedProjectName);
     }
@@ -48,10 +49,10 @@ export default function SelectedProject({ project }) {
   return (
     <>
       <Modal ref={modalRef} buttonCaption="Okay">
-        <h2 className="text-xl font-bold text-stone-700 my-4">
+        <h2 className="text-xl font-bold text-slate-700 my-4">
           Longer characters
         </h2>
-        <p className="text-stone-600 mb-4">
+        <p className="text-slate-600 mb-4">
           Oops... try entering character less than 30 characters.
         </p>
       </Modal>
@@ -61,8 +62,8 @@ export default function SelectedProject({ project }) {
         onConfirm={handleConfirmDelete}
         danger={true}
       >
-        <h2 className="text-xl font-bold text-stone-700 my-4">Are you sure?</h2>
-        <p className="text-stone-600 mb-4">
+        <h2 className="text-xl font-bold text-slate-700 my-4">Are you sure?</h2>
+        <p className="text-slate-600 mb-4">
           This action cannot be undone. Do you want to proceed?
         </p>
       </Modal>
