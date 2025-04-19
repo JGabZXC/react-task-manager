@@ -9,22 +9,26 @@ export const TaskContext = createContext({
   setSelectedTaskId: () => {},
   deleteSelectedTask: () => {},
   setSelectedTaskIdAsDone: () => {},
+  addDescription: () => {},
+  addSubTask: () => {},
+  subTaskIsDone: () => {},
 });
 
 export default function TaskProvider({ children }) {
   const [tasksState, setTasksState] = useState({
     tasks: [],
+    subTasks: [],
     selectedTaskId: null,
   });
 
   function addTaskHandler(projectId, taskName) {
-    tasksState;
     const taskId = Date.now();
     const newTask = {
       id: taskId,
       parentId: projectId,
       name: taskName,
       isDone: false,
+      description: "",
     };
 
     setTasksState((prevState) => {
@@ -73,6 +77,44 @@ export default function TaskProvider({ children }) {
     });
   }
 
+  // DESCRIPTION
+  function addDescription(taskId, description) {
+    setTasksState((prevState) => ({
+      ...prevState,
+      tasks: prevState.tasks.map((task) => {
+        if (task.id === taskId) return { ...task, description: description };
+        return task;
+      }),
+    }));
+  }
+
+  // SUB TASKS
+  function addSubTask(taskId, subTaskname) {
+    const subTaskId = Date.now();
+    const newSubTask = {
+      id: subTaskId,
+      parentId: taskId,
+      name: subTaskname,
+      isDone: false,
+    };
+
+    setTasksState((prevState) => ({
+      ...prevState,
+      subTasks: [...prevState.subTasks, newSubTask],
+    }));
+  }
+
+  function subTaskIsDone(subTaskId) {
+    setTasksState((prevState) => ({
+      ...prevState,
+      subTasks: prevState.subTasks.map((subTask) => {
+        if (subTask.id === subTaskId)
+          return { ...subTask, isDone: !subTask.isDone };
+        return subTask;
+      }),
+    }));
+  }
+
   const tasksStateValue = {
     tasksState: tasksState,
     deleteTasks,
@@ -80,6 +122,9 @@ export default function TaskProvider({ children }) {
     setSelectedTaskId,
     deleteSelectedTask,
     setSelectedTaskIdAsDone,
+    addDescription,
+    addSubTask,
+    subTaskIsDone,
   };
 
   return (

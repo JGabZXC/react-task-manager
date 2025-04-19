@@ -1,7 +1,7 @@
 export default function Button({ children, onClick, type, disabled }) {
   ("<Button/> rendered");
   let cssClasses =
-    "cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300";
+    "cursor-pointer py-2 px-4 rounded-md border-2 transition-colors duration-300 focus:outline-none";
 
   if (type === "warning") {
     cssClasses += " border-yellow-500 hover:bg-yellow-500";

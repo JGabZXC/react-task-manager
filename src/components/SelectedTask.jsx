@@ -2,6 +2,8 @@ import { useContext, useRef } from "react";
 import { TaskContext } from "../store/TaskContext";
 
 import Modal from "./Modal";
+import TaskDescription from "./TaskDescription";
+import SubTask from "./SubTask";
 
 export default function SelectedTask({ tasks, taskId }) {
   const modalRef = useRef();
@@ -95,12 +97,10 @@ export default function SelectedTask({ tasks, taskId }) {
             </button>
           </div>
         </div>
-        <p>Description</p>
-        <hr className="text-slate-500" />
-        <p>Sub task list</p>
-        <ul>
-          <li></li>
-        </ul>
+        <TaskDescription selectedTask={selectedTask} />
+        <hr className="text-slate-500 my-2" />
+
+        <SubTask selectedTask={selectedTask} />
       </div>
     </>
   );
